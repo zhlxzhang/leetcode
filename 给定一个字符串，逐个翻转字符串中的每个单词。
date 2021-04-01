@@ -1,0 +1,24 @@
+class Solution {
+    public String reverseWords(String s) {
+        //1.去掉两边的空格
+        String str1 = s.trim();
+        if (str1 != null){
+            //2.转化为string数组
+            String[] strs = str1.split("\\ +");
+            int n = strs.length;
+            //3.反转位置
+            for (int i = 0, j = n - 1; i < j; i++, j-- ){
+                String temp = strs[i];
+                strs[i] = strs[j];
+                strs[j] = temp;
+            }
+            StringBuffer target = new StringBuffer();
+            for (int i = 0; i < n; i++){
+                target.append(strs[i] + " ");
+            }
+            //4.再去掉两端的空格
+            return target.toString().trim();
+        }
+        return null;
+    }
+}
