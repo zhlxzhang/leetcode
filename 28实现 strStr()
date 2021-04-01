@@ -1,3 +1,4 @@
+//解法一
 class Solution {
     public int strStr(String haystack, String needle) {
         if (needle != null){
@@ -11,5 +12,12 @@ class Solution {
             return -1;
         }
         return 0;        
+    }
+}
+
+//解法二：调用String类中的indexOf()方法
+class Solution {
+    public int strStr(String haystack, String needle) {   
+        return haystack.indexOf(needle);
     }
 }
