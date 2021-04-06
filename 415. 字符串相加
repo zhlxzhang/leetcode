@@ -1,0 +1,27 @@
+/*
+给定两个字符串形式的非负整数 num1 和num2 ，计算它们的和。
+执行用时：3 ms, 在所有 Java 提交中击败了65.57%的用户
+内存消耗：38.3 MB, 在所有 Java 提交中击败了90.07%的用户
+
+时间复杂度：O(max⁡(len1,len2))。竖式加法的次数取决于较大数的位数。
+空间复杂度：O(1)。除答案外我们只需要常数空间存放若干变量。在 Java 解法中使用到了 StringBuffer，故 Java 解法的空间复杂度为 O(n)。
+
+
+
+*/
+class Solution {
+    public String addStrings(String num1, String num2) {
+        StringBuilder res = new StringBuilder("");
+        int i = num1.length() - 1, j = num2.length() - 1, carry = 0;
+        while(i >= 0 || j >= 0){
+            int n1 = i >= 0 ? num1.charAt(i) - '0' : 0;
+            int n2 = j >= 0 ? num2.charAt(j) - '0' : 0;
+            int tmp = n1 + n2 + carry;
+            carry = tmp / 10;
+            res.append(tmp % 10);
+            i--; j--;
+        }
+        if(carry == 1) res.append(1);
+        return res.reverse().toString();
+    }
+}
